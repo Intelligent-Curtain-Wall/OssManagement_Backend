@@ -21,3 +21,63 @@ Intelligent Curtain Wall: OSS management console system (backend application)
 | [林继申](https://github.com/MinmusLin) | 2250758 |
 | [刘淑仪](https://github.com/bunnyoii) | 2251730 |
 | [中谷天音](https://github.com/amaneosaka) | 2256225 |
+
+## 对象存储 OSS 配置
+
+### 配置 RAM 访问控制
+
+#### 管理用户身份
+
+创建子系统用户，选择“使用永久 AccessKey 访问”：
+
+![](assets/2024-11-21_18-49-58.png)
+
+#### 管理用户组身份
+
+创建 tongji-icw 用户组：
+
+![](assets/2024-11-21_19-00-20.png)
+
+进行组成员管理：
+
+![](assets/2024-11-21_19-03-01.png)
+
+进行权限管理：
+
+![](assets/2024-11-21_19-03-46.png)
+
+### 配置 Bucket
+
+#### 创建 Bucket
+
+Bucket 基本信息：
+
+![](assets/2024-11-21_18-39-50.png)
+
+#### 配置子系统目录
+
+文件列表：
+
+![](assets/2024-11-21_19-07-14.png)
+
+#### 配置权限控制
+
+阻止公共访问：开启
+
+Bucket ACL：私有
+
+Bucket 授权策略：
+
+![](assets/2024-11-21_19-08-59.png)
+
+![](assets/2024-11-21_23-02-47.png)
+
+![](assets/2024-11-21_23-03-00.png)
+
+![](assets/2024-11-21_23-03-15.png)
+
+#### 配置跨域规则
+
+跨域规则：
+
+![](assets/2024-11-21_19-20-46.png)
