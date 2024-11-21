@@ -27,7 +27,7 @@ Intelligent Curtain Wall: OSS management console system (backend application)
 | [刘淑仪](https://github.com/bunnyoii) | 2251730 |
 | [中谷天音](https://github.com/amaneosaka) | 2256225 |
 
-## 对象存储 OSS 配置
+## 阿里云对象存储 OSS 配置
 
 ### 配置 RAM 访问控制
 
