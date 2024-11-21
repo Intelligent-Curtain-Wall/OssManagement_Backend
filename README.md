@@ -66,15 +66,962 @@ Bucket 基本信息：
 
 Bucket ACL：私有
 
-Bucket 授权策略：
+Bucket 授权策略（按图形策略添加）：
 
 ![](assets/2024-11-21_19-08-59.png)
 
-![](assets/2024-11-21_23-02-47.png)
+Bucket 授权策略（按语法策略添加）：
 
-![](assets/2024-11-21_23-03-00.png)
+<details>
+<summary>点击展开 / 收起配置</summary>
 
-![](assets/2024-11-21_23-03-15.png)
+```
+{
+	"Version": "1",
+	"Statement": [{
+		"Effect": "Allow",
+		"Action": [
+			"oss:*"
+		],
+		"Principal": [
+			"203238532177578488"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw",
+			"acs:oss:*:1840912401570629:tongji-icw/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"207497432177626146"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/resilience-assessment/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"207497432177626146"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"resilience-assessment/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202228632177468432"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/mobile-data/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202228632177468432"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"mobile-data/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"205043732177364237"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/crack-detection/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"205043732177364237"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"crack-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"206024232177523168"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/modeling-communication/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"206024232177523168"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"modeling-communication/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202679532177412861"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/flatness-detection/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202679532177412861"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"flatness-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/vibration-detection/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"vibration-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"206143832177666471"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/spalling-detection/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"206143832177666471"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"spalling-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"209855232177727414"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/stain-detection/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"209855232177727414"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"stain-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:GetObject",
+			"oss:PutObject",
+			"oss:GetObjectAcl",
+			"oss:PutObjectAcl",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:ListParts",
+			"oss:RestoreObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/corrosion-detection/*"
+		]
+	}, {
+		"Effect": "Allow",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"corrosion-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"206024232177523168",
+			"202228632177468432",
+			"202679532177412861",
+			"205043732177364237",
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/resilience-assessment/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"206024232177523168",
+			"202228632177468432",
+			"202679532177412861",
+			"205043732177364237",
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"resilience-assessment/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"206024232177523168",
+			"202679532177412861",
+			"205043732177364237",
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/mobile-data/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"206024232177523168",
+			"202679532177412861",
+			"205043732177364237",
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"mobile-data/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"206024232177523168",
+			"203442632177276331",
+			"202679532177412861",
+			"202228632177468432"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/crack-detection/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"206024232177523168",
+			"203442632177276331",
+			"202679532177412861",
+			"202228632177468432"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"crack-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"202228632177468432",
+			"202679532177412861",
+			"205043732177364237",
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/modeling-communication/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"202228632177468432",
+			"202679532177412861",
+			"205043732177364237",
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"modeling-communication/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"203442632177276331",
+			"205043732177364237",
+			"206024232177523168",
+			"202228632177468432"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/flatness-detection/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"203442632177276331",
+			"205043732177364237",
+			"206024232177523168",
+			"202228632177468432"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"flatness-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"206024232177523168",
+			"202228632177468432",
+			"202679532177412861",
+			"205043732177364237",
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/vibration-detection/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"206024232177523168",
+			"202228632177468432",
+			"202679532177412861",
+			"205043732177364237",
+			"203442632177276331"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"vibration-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"207497432177626146",
+			"206024232177523168",
+			"202228632177468432",
+			"202679532177412861",
+			"203442632177276331",
+			"205043732177364237"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/spalling-detection/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"207497432177626146",
+			"206024232177523168",
+			"202228632177468432",
+			"202679532177412861",
+			"203442632177276331",
+			"205043732177364237"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"spalling-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230",
+			"206143832177666471",
+			"207497432177626146",
+			"203442632177276331",
+			"205043732177364237",
+			"202679532177412861",
+			"202228632177468432",
+			"206024232177523168"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/stain-detection/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230",
+			"206143832177666471",
+			"207497432177626146",
+			"203442632177276331",
+			"205043732177364237",
+			"202679532177412861",
+			"202228632177468432",
+			"206024232177523168"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"stain-detection/*"
+				]
+			}
+		}
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:RestoreObject",
+			"oss:ListObjects",
+			"oss:AbortMultipartUpload",
+			"oss:PutObjectAcl",
+			"oss:GetObjectAcl",
+			"oss:ListParts",
+			"oss:DeleteObject",
+			"oss:PutObject",
+			"oss:GetObject",
+			"oss:GetVodPlaylist",
+			"oss:PostVodPlaylist",
+			"oss:PublishRtmpStream",
+			"oss:ListObjectVersions",
+			"oss:GetObjectVersion",
+			"oss:GetObjectVersionAcl",
+			"oss:RestoreObjectVersion"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"206024232177523168",
+			"202679532177412861",
+			"202228632177468432",
+			"205043732177364237"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw/corrosion-detection/*"
+		]
+	}, {
+		"Effect": "Deny",
+		"Action": [
+			"oss:ListObjects",
+			"oss:GetObject"
+		],
+		"Principal": [
+			"202043632177767230",
+			"209855232177727414",
+			"206143832177666471",
+			"207497432177626146",
+			"206024232177523168",
+			"202679532177412861",
+			"202228632177468432",
+			"205043732177364237"
+		],
+		"Resource": [
+			"acs:oss:*:1840912401570629:tongji-icw"
+		],
+		"Condition": {
+			"StringLike": {
+        		"oss:Prefix": [
+					"corrosion-detection/*"
+				]
+			}
+		}
+	}]
+}
+```
+
+</details>
 
 #### 配置跨域规则
 
