@@ -14,11 +14,6 @@ Intelligent Curtain Wall: OSS management console system (backend application)
 >
 > Git 的子模块（submodule）允许在一个 Git 仓库中嵌套另一个独立的 Git 仓库，便于管理项目依赖。[集成 Git 仓库](https://github.com/MinmusLin/Intelligent_Curtain_Wall_Backend_Integration)引用了本子系统 Git 仓库的最新版本，以便在构建和运行时确保使用的代码是最新的。
 
-> [!IMPORTANT]
-> [Intelligent Curtain Wall Dataset Management Platform](http://110.42.214.164) Password: **tongji-icw-49773674**
->
-> [智慧幕墙数据集管理平台](http://110.42.214.164)密码：**tongji-icw-49773674**
-
 ## 成员信息
 
 | 姓名 | 学号 |
