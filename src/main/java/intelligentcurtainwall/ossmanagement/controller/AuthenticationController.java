@@ -13,11 +13,12 @@ import java.util.List;
 
 @RestController
 public class AuthenticationController {
+
     private final List<UserCredentials> users;
 
     public AuthenticationController() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        users = mapper.readValue(new ClassPathResource("config.json").getInputStream(), new TypeReference<>() {
+        users = mapper.readValue(new ClassPathResource("oss-config.json").getInputStream(), new TypeReference<>() {
         });
     }
 

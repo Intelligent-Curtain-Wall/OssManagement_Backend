@@ -16,9 +16,9 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
 
-      - name: Create config file
+      - name: Create oss config file
         run: |
-          cat > src/main/resources/config.json <<EOF
+          cat > src/main/resources/oss-config.json <<EOF
           [
             {
               "UserName": "corrosion-detection",
@@ -80,6 +80,17 @@ jobs:
               "AccessKeyId": "${{ secrets.VIBRATION_DETECTION_AKID }}",
               "AccessKeySecret": "${{ secrets.VIBRATION_DETECTION_AKSC }}"
             }
+          ]
+          EOF
+
+      - name: Create ssh config file
+        run: |
+          cat > src/main/resources/ssh-config.properties <<EOF
+          [
+            host="${{ secrets.SSH_HOST }}"
+            port="${{ secrets.SSH_PORT }}"
+            username="${{ secrets.SSH_USERNAME }}"
+            password="${{ secrets.SSH_PASSWORD }}"
           ]
           EOF
 
