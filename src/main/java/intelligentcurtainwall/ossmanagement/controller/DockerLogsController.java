@@ -42,19 +42,19 @@ public class DockerLogsController {
                         sshConfig.getProperty("username"),
                         sshConfig.getProperty("password"),
                         command);
-                InputStream in = streams[0];
-                InputStream err = streams[1];
 
-                BufferedReader stdIn = new BufferedReader(new InputStreamReader(in));
-                BufferedReader stdErr = new BufferedReader(new InputStreamReader(err));
+                InputStream stdInStream = streams[0];
+                InputStream stdErrStream = streams[1];
 
-                String line;
-                while ((line = stdIn.readLine()) != null) {
-                    emitter.send(line + "\n");
-                }
-                while ((line = stdErr.readLine()) != null) {
-                    emitter.send(line + "\n");
-                }
+                Thread stdOutThread = createStreamHandler(stdInStream, emitter);
+                Thread stdErrThread = createStreamHandler(stdErrStream, emitter);
+
+                stdOutThread.start();
+                stdErrThread.start();
+
+                stdOutThread.join();
+                stdErrThread.join();
+
                 emitter.complete();
             } catch (Exception e) {
                 emitter.completeWithError(e);
@@ -62,5 +62,22 @@ public class DockerLogsController {
         }).start();
 
         return emitter;
+    }
+
+    private Thread createStreamHandler(InputStream stream, SseEmitter emitter) {
+        return new Thread(() -> {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    emitter.send(line, MediaType.TEXT_PLAIN);
+                }
+            } catch (IOException e) {
+                try {
+                    emitter.send("Error: " + e.getMessage(), MediaType.TEXT_PLAIN);
+                } catch (IOException ioException) {
+                    // Ignore sending errors
+                }
+            }
+        });
     }
 }
