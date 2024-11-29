@@ -1,8 +1,8 @@
 # OSS Management Console System
 
-Intelligent Curtain Wall: OSS management console system (backend application)
+Intelligent Curtain Wall: OSS management console system (Intelligent Curtain Wall Dataset Management Platform) (backend application)
 
-智慧幕墙：对象存储 OSS 管理控制系统（后端应用程序）
+智慧幕墙：对象存储 OSS 管理控制系统（智慧幕墙数据集管理平台）（后端应用程序）
 
 > [!WARNING]
 > Do not modify this README.md file! This repository is intended only for code and related model files, documentation should not be stored here!
