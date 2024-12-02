@@ -94,6 +94,17 @@ jobs:
           ]
           EOF
 
+      - name: Create oss config file
+        run: |
+          cat > src/main/resources/oss-config.properties <<EOF
+          [
+            oss.endpoint=${{ secrets.OSS_ENDPOINT }}
+            oss.bucket=${{ secrets.OSS_BUCKET }}
+            oss.accessKeyId=${{ secrets.OSS_ACCESS_KEY_ID }}
+            oss.accessKeySecret=${{ secrets.OSS_ACCESS_KEY_SECRET }}
+          ]
+          EOF
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
