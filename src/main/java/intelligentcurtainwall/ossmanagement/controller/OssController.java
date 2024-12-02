@@ -18,15 +18,15 @@ public class OssController {
 
     private final OssService ossService;
 
+    private final AuthenticationController authenticationController;
+
     @Value("${oss.bucket}")
     private String bucket;
 
     @Autowired
-    private AuthenticationController authenticationController;
-
-    @Autowired
-    public OssController(OssService ossService) {
+    public OssController(OssService ossService, AuthenticationController authenticationController) {
         this.ossService = ossService;
+        this.authenticationController = authenticationController;
     }
 
     @GetMapping("/download/**")
