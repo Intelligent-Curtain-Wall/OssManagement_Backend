@@ -3,8 +3,10 @@ package intelligentcurtainwall.ossmanagement.service;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.GetObjectRequest;
 import com.aliyun.oss.model.OSSObject;
+import com.aliyun.oss.model.PutObjectRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -37,5 +39,11 @@ public class OssService {
             byteArrayOutputStream.write(buffer, 0, length);
         }
         return byteArrayOutputStream.toByteArray();
+    }
+
+    public String putObject(String bucketName, String objectKey, MultipartFile file) throws IOException {
+        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, objectKey, file.getInputStream());
+        ossClient.putObject(putObjectRequest);
+        return objectKey;
     }
 }
