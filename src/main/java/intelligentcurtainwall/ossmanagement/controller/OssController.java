@@ -31,13 +31,20 @@ public class OssController {
 
     @GetMapping("/download/**")
     public ResponseEntity<byte[]> downloadFile(HttpServletRequest request) {
+        // Get the full URI and extract the object key
         String fullPath = request.getRequestURI().replace(request.getContextPath(), "");
-        String key = fullPath.substring("/oss/".length());
+        String key = fullPath.substring("/oss/download/".length());
+
+        // Fetch the file content from OSS
         byte[] fileContent = ossService.getObject(bucket, key);
         if (fileContent == null) {
             return ResponseEntity.notFound().build();
         }
+
+        // Extract the file name from the key
         String fileName = key.substring(key.lastIndexOf("/") + 1);
+
+        // Set the content disposition header for file download
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
         return ResponseEntity.ok().headers(headers).body(fileContent);
