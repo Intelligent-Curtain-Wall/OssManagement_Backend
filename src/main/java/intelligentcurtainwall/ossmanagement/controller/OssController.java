@@ -68,6 +68,11 @@ public class OssController {
         String fullPath = request.getRequestURI().replace(request.getContextPath(), "");
         String objectKey = userName + '/' + fullPath.substring("/oss/upload/".length());
 
+        // Validate objectKey
+        if (!isValidObjectKey(objectKey)) {
+            return ResponseEntity.status(400).body("Invalid object key format: Directories must contain only [A-Za-z-] and filenames must contain only [A-Za-z-.]");
+        }
+
         // Upload file to OSS
         try {
             String uploadedFileKey = ossService.putObject(bucket, objectKey, file);
@@ -76,5 +81,10 @@ public class OssController {
         } catch (IOException e) {
             return ResponseEntity.status(500).body("File upload failed: " + e.getMessage());
         }
+    }
+
+    private boolean isValidObjectKey(String objectKey) {
+        String regex = "^[A-Za-z-]+(?:/[A-Za-z-]+)*$";
+        return objectKey.matches(regex) && objectKey.lastIndexOf('/') > objectKey.indexOf('.');
     }
 }
