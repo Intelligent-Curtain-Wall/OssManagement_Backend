@@ -70,7 +70,7 @@ public class OssController {
 
         // Validate objectKey
         if (!isValidObjectKey(objectKey)) {
-            return ResponseEntity.status(400).body("Invalid object key format: Directories must contain only [A-Za-z-] and filenames must contain only [A-Za-z-.]");
+            return ResponseEntity.status(400).body("Invalid object key format: Directories must contain only [A-Za-z0-9-] and filenames must contain only [A-Za-z0-9-.]");
         }
 
         // Upload file to OSS
@@ -84,7 +84,19 @@ public class OssController {
     }
 
     private boolean isValidObjectKey(String objectKey) {
-        String regex = "^[A-Za-z-]+(?:/[A-Za-z-]+)*$";
-        return objectKey.matches(regex) && objectKey.lastIndexOf('/') > objectKey.indexOf('.');
+        if (objectKey == null || objectKey.isEmpty() || objectKey.endsWith("/")) {
+            return false;
+        }
+        String[] parts = objectKey.split("/");
+        for (int i = 0; i < parts.length - 1; i++) {
+            if (!parts[i].matches("^[A-Za-z0-9-]+$")) {
+                return false;
+            }
+        }
+        String fileName = parts[parts.length - 1];
+        if (!fileName.matches("^[A-Za-z0-9-.]+$")) {
+            return false;
+        }
+        return !objectKey.contains("//");
     }
 }
