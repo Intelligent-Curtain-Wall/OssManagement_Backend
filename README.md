@@ -1,8 +1,14 @@
-# OSS Management Console System
+# Intelligent Curtain Wall Dataset Management Platform Backend
 
-Intelligent Curtain Wall: OSS management console system (Intelligent Curtain Wall Dataset Management Platform) (backend application)
+## 项目名称
 
-智慧幕墙：对象存储 OSS 管理控制系统（智慧幕墙数据集管理平台）（后端应用程序）
+ICW_OssManagement_Backend
+
+## 项目简介
+
+Intelligent Curtain Wall: Dataset management platform (backend application)
+
+智慧幕墙：数据集管理平台（后端应用程序）
 
 > [!WARNING]
 > Do not modify this README.md file! This repository is intended only for code and related model files, documentation should not be stored here!
@@ -21,3 +27,11 @@ Intelligent Curtain Wall: OSS management console system (Intelligent Curtain Wal
 | [林继申](https://github.com/MinmusLin) | 2250758 |
 | [刘淑仪](https://github.com/bunnyoii) | 2251730 |
 | [中谷天音](https://github.com/amaneosaka) | 2256225 |
+
+```
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
+```
+
+## 文档更新日期
+
+2024年12月6日

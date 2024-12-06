@@ -20,6 +20,7 @@ import java.util.Properties;
 public class DockerLogsController {
 
     private final SshService sshService;
+
     private final Properties sshConfig;
 
     public DockerLogsController(SshService sshService) {
