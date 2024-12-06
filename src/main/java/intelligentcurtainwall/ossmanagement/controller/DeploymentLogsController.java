@@ -14,7 +14,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 @RestController
-@RequestMapping("/deployment-logs")
 public class DeploymentLogsController {
 
     private final SshService sshService;
@@ -31,7 +30,7 @@ public class DeploymentLogsController {
         }
     }
 
-    @GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(value = "/deployment-logs", produces = MediaType.TEXT_PLAIN_VALUE)
     public String getDeploymentLogs() {
         String currentDate = getCurrentDate();
         String logDir = "/home/mat/Intelligent_Curtain_Wall/deployment-logs/" + currentDate;
