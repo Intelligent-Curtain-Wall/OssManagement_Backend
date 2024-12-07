@@ -76,7 +76,7 @@ public class OssController {
         // Upload file to OSS
         try {
             String uploadedFileKey = ossService.putObject(bucket, objectKey, file);
-            String downloadUrl = "http://110.42.214.164:8005/oss/download/" + uploadedFileKey;
+            String downloadUrl = "http://110.42.214.164:9000/oss/download/" + uploadedFileKey;
             return ResponseEntity.ok(downloadUrl);
         } catch (IOException e) {
             return ResponseEntity.status(500).body("File upload failed: " + e.getMessage());
