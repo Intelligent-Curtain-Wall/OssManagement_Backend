@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  ci-cd-pipeline:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,6 +15,36 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.ref }}
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.WORKFLOW_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Clone secrets repository
+        run: |
+          git clone git@github.com:Intelligent-Curtain-Wall/.secrets.git
+          if [ ! -d ".secrets" ]; then
+            echo "Error: .secrets directory not found!"
+            exit 1
+          fi
+
+      - name: Read secrets and set environment variables
+        run: |
+          export DOCKER_USERNAME=$(cat .secrets/DOCKER_USERNAME)
+          export DOCKER_PASSWORD=$(cat .secrets/DOCKER_PASSWORD)
+          export MATPOOL_SSH_PORT=$(cat .secrets/MATPOOL_SSH_PORT)
+          export MATPOOL_SSH_HOST=$(cat .secrets/MATPOOL_SSH_HOST)
+          export MATPOOL_SSH_USERNAME=$(cat .secrets/MATPOOL_SSH_USERNAME)
+          export MATPOOL_SSH_PASSWORD=$(cat .secrets/MATPOOL_SSH_PASSWORD)
+          echo "DOCKER_USERNAME=$DOCKER_USERNAME" >> $GITHUB_ENV
+          echo "DOCKER_PASSWORD=$DOCKER_PASSWORD" >> $GITHUB_ENV
+          echo "MATPOOL_SSH_PORT=$MATPOOL_SSH_PORT" >> $GITHUB_ENV
+          echo "MATPOOL_SSH_HOST=$MATPOOL_SSH_HOST" >> $GITHUB_ENV
+          echo "MATPOOL_SSH_USERNAME=$MATPOOL_SSH_USERNAME" >> $GITHUB_ENV
+          echo "MATPOOL_SSH_PASSWORD=$MATPOOL_SSH_PASSWORD" >> $GITHUB_ENV
 
       - name: Create oss config file
         run: |
@@ -87,10 +117,10 @@ jobs:
         run: |
           cat > src/main/resources/ssh-config.properties <<EOF
           [
-            host=${{ secrets.SSH_HOST }}
-            port=${{ secrets.SSH_PORT }}
-            username=${{ secrets.SSH_USERNAME }}
-            password=${{ secrets.SSH_PASSWORD }}
+            host=${{ env.MATPOOL_SSH_HOST }}
+            port=${{ env.MATPOOL_SSH_PORT }}
+            username=${{ env.MATPOOL_SSH_USERNAME }}
+            password=${{ env.MATPOOL_SSH_PASSWORD }}
           ]
           EOF
 
@@ -108,8 +138,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ env.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
