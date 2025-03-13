@@ -1,6 +1,6 @@
 # Dataset Management Platform
 
-Dataset management platform (backend application)
+Dataset Management Platform (Backend Application)
 
 数据集管理平台（后端应用程序）
 
