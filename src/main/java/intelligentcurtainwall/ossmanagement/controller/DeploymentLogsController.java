@@ -32,12 +32,11 @@ public class DeploymentLogsController {
 
     @GetMapping(value = "/deployment-logs", produces = MediaType.TEXT_PLAIN_VALUE)
     public String getDeploymentLogs() {
-        String currentDate = getCurrentDate();
-        String logDir = "/home/mat/Intelligent_Curtain_Wall/deployment-logs/" + currentDate;
+        String logDir = "/home/mat/Intelligent_Curtain_Wall/deployment-logs/";
         String command = "ls -t " + logDir + "/*.txt | head -n 1";
         String logFilePath = executeSSHCommand(command);
         if (logFilePath.isEmpty()) {
-            return "No log file found for today.";
+            return "No log file found.";
         }
         command = "cat " + logFilePath;
         return executeSSHCommand(command);
